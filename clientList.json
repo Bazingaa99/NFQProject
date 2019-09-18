@@ -1,0 +1,28 @@
+[
+    {
+        "name":"Vardenis",
+        "last-name":"Pavardenis",
+        "age":25
+    },
+    {
+        "name":"Jonas",
+        "last-name":"Jonaitis",
+        "age":32
+    },
+    {
+        "name":"Ona",
+        "last-name":"Onaite",
+        "age":21
+    },
+    {
+        "name":"Mantas",
+        "last-name":"Kalnietis",
+        "age":31
+    },
+    {
+        "name":"Rytis",
+        "last-name":"Vakarytis",
+        "age":50
+    }
+
+]

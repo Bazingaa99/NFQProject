@@ -1,6 +1,27 @@
 <!DOCTYPE html>
+<head>
+    <script src="functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script type="text/javascript" src="clientList.json"></script>
+</head>
+
 <html>
     <body>
-        
+        <div class="admin-page-panel">
+            <h1 class="h1-admin">Client registration page</h1>
+            <p class="p-admin">Insert client's info into this form:</p>
+            <form id="client-form">
+                First name:<br>
+                <input id="fname"type="text" name="firstname" placeholder="Input client's name" required>
+                <br>
+                Last name:<br>
+                <input id="lname" type="text" name="lastname" placeholder="Input client's last name" required>
+                <br>
+                Age:<br>
+                <input id="age" type="number" name="age" placeholder="input client's age" required>
+                <br><br>
+                <button type="submit">Submit</button>
+            </form> 
+        </div>
     </body>
 </html>
