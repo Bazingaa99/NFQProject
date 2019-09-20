@@ -1,53 +1,67 @@
 window.onload=function(){
 
-    window.localStorage.setItem('clients', JSON.parse(Storage.readSync('clientList.json')));
+    let cardiologist = [], odontologist = [], dermatologist = [];
 
-    let clientObj = this.localStorage.getItem('clients');
+    function fetchJSONFile(path, callback){
+        var httpRequest = new XMLHttpRequest();
+        httpRequest.onreadystatechange = function(){
+            if(httpRequest.readyState === 4){
+                if(httpRequest.status === 200){
+                    var data = JSON.parse(httpRequest.responseText);
+                    if(callback) callback(data);
+                }
+            }
+        };
+        httpRequest.open('GET', path);
+        httpRequest.send();
+    }
 
-    this.alert(clientObj);
+    const loadButton = document.getElementById('load-to-local');
+    if(loadButton){
+        loadButton.addEventListener('click', fetchJSONFile('clientList.json', function(data){
+            for(let client of data){
+                window.localStorage.setItem(client.name, client.clientNum);
+            }
+        }));
+    }
 
-function storeInfo(){
-    console.log("praeina");
-    var inputName = document.getElementById("fname");
-    window.localStorage.setItem("name", inputName.value);
+    function calcClientNum(){
+        var res = 0;
 
-    var inputLastName = document.getElementById("lname");
-    window.localStorage.setItem("last-name", inputLastName.value);
-
-    var inputAge = document.getElementById("age");
-    window.localStorage.setItem("age", inputAge.value.toString());
-
-    alert(window.localStorage.getItem('name'));
-    alert(window.localStorage.getItem('last-name'));
-    alert(window.localStorage.getItem('age'));
-}
-
-const form = document.getElementById('client-form')
-if(form){
-    form.addEventListener('submit', storeInfo)
-}
-
-function fetchJSONFile(path, callback){
-    var httpRequest = new XMLHttpRequest();
-    httpRequest.onreadystatechange = function(){
-        if(httpRequest.readyState === 4){
-            if(httpRequest.status === 200){
-                var data = JSON.parse(httpRequest.responseText);
-                if(callback) callback(data);
+        for(let i = 0; i < localStorage.length; i++){
+            storedNumber = parseInt(localStorage.getItem(localStorage.key(i)));
+            if(storedNumber >= res){
+                res = parseInt(storedNumber) + 1;
             }
         }
-    };
-    httpRequest.open('GET', path);
-    httpRequest.send();
-}
 
-const loadClient = document.getElementById('load-client');
-if(loadClient){
-    loadClient.addEventListener('click', function(){
-        fetchJSONFile('clientList.json', function(data){
-                document.getElementById('demo').innerHTML += client['name'] + " " + client['last-name'] + " " + client['age'];
-        });
-    })
-}
+        return "0" + res.toString();
+    }
 
+
+    function storeInfo(){
+        var name = document.getElementById("fname");
+        var lastName = document.getElementById("lname");
+        var specialist = document.getElementById('spec-select');
+
+        var fullName = name.value + " " + lastName.value;
+
+        if(name && lastName && specialist){
+            if(localStorage.getItem(fullName) === null){
+                var clientNum = calcClientNum();
+                localStorage.setItem(fullName, clientNum);
+            }else{
+                alert("Client already in line.");
+            }
+        }else{
+            alert("Please fill the form correctly");
+        }
+    }
+
+    const form = document.getElementById('client-form')
+    if(form){
+        form.addEventListener('submit', storeInfo)
+    }
+
+    console.log(localStorage);
 }

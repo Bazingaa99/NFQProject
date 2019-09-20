@@ -1,28 +1,23 @@
 [
     {
-        "name":"Vardenis",
-        "last-name":"Pavardenis",
-        "age":25
+        "name":"Vardenis Pavardenis",
+        "clientNum":"01"
     },
     {
-        "name":"Jonas",
-        "last-name":"Jonaitis",
-        "age":32
+        "name":"Jonas Jonaitis",
+        "clientNum":"02"
     },
     {
-        "name":"Ona",
-        "last-name":"Onaite",
-        "age":21
+        "name":"Ona Onute",
+        "clientNum":"03"
     },
     {
-        "name":"Mantas",
-        "last-name":"Kalnietis",
-        "age":31
+        "name":"Mantas Kalnietis",
+        "clientNum":"04"
     },
     {
-        "name":"Rytis",
-        "last-name":"Vakarytis",
-        "age":50
+        "name":"Rytis Vakarytis",
+        "clientNum":"05"
     }
-
 ]
+

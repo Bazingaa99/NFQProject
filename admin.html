@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <script src="functions.js"></script>
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <script type="text/javascript" src="clientList.json"></script>
+    <script type="text/javascript" src="functions.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
 </head>
 
 <html>
@@ -17,11 +17,18 @@
                 Last name:<br>
                 <input id="lname" type="text" name="lastname" placeholder="Input client's last name" required>
                 <br>
-                Age:<br>
-                <input id="age" type="number" name="age" placeholder="input client's age" required>
+                Specialist:<br>
+                <select id="spec-select">
+                    <option disable="disable" selected="selected">Assign a specialist</option>
+                    <option value="cardiologist">Cardiologist</option>
+                    <option value="odontologist">Odontologist</option>
+                    <option value="dermatologist">Dermatologist</option>
+                </select>
                 <br><br>
                 <button type="submit">Submit</button>
-            </form> 
+            </form>
+            <button id="clear-local" type="button" value="clear-local-storage" onclick="localStorage.clear();">Clear local storage</button>
+            <button id="load-to-local" type="button" value="load-to-local=storage">Load to local storage</button> 
         </div>
     </body>
 </html>
