@@ -3,6 +3,6 @@ Yra JSON failas su pavyzdiniu klientu sąrašu +
  Pavyzdiniai duomenys įkraunami dinamiškai neperkraunant naršyklės (AJAX užklausa) +
  Duomenys atvaizduojami surikiuoti pagal specialistą ir tada pagal kliento numerį (švieslentės puslapis) +
  Yra funkcija įrašymui į localStorage (administravimo puslapis) +
- Yra funkcija kliento ištrynimui iš objekto (mygtukas Aptarnauta)(specialisto puslapis) -
- Duomenų filtravimas: pasirinkimas, kokio specialisto klientus aptarnauti (specialisto puslapis) -
+ Yra funkcija kliento ištrynimui iš objekto (mygtukas Aptarnauta)(specialisto puslapis) +
+ Duomenų filtravimas: pasirinkimas, kokio specialisto klientus aptarnauti (specialisto puslapis) +
  Gražesnis dizainas panaudojant CSS (švieslentės puslapis) -----------

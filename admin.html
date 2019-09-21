@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="clientList.json"></script>
     <script type="text/javascript" src="functions.js"></script>
     <link rel="stylesheet" type="text/css" href="styles.css">
@@ -7,30 +8,41 @@
 
 <html>
     <body>
-        <div class="admin-page-panel">
-            <h1 class="h1-admin">Client registration page</h1>
-            <p class="p-admin">Insert client's info into this form:</p>
+        <div id="admin-page-panel">
+            <header id="form-text-div">
+                <h1 class="h1-admin">Client registration page</h1>
+                <p class="p-admin">Insert client's info into this form:</p>
+            </header>
             <form id="client-form">
-                First name:<br>
-                <input id="fname"type="text" name="firstname" placeholder="Input client's name" required>
-                <br>
-                Last name:<br>
-                <input id="lname" type="text" name="lastname" placeholder="Input client's last name" required>
-                <br>
-                Specialist:<br>
-                <select id="spec-select">
-                    <option disable="disable" selected="selected">Assign a specialist</option>
-                    <option value="cardiologist">Cardiologist</option>
-                    <option value="odontologist">Odontologist</option>
-                    <option value="dermatologist">Dermatologist</option>
-                </select>
-                <br><br>
-                <button type="submit">Submit</button>
-            </form>
-            <button id="clear-local" type="button" value="clear-local-storage" onclick="localStorage.clear();">Clear local storage</button>
-            <button id="load-to-local" type="button" value="load-to-local-storage">Load to local storage</button> 
-            <button id="go-to-scoreboard" type="button" value="scoreboard"><a href="scoreboard.html" target="_blank">Scoreboard</a></button>
-            <button id="go-to-specialist" type="button" value="specialist"><a href="specialist.html" target="_blank">Specialist</a></button>
+                <div class="client-input-div">
+                    First name:<br>
+                    <input id="fname" class="text-input" type="text" name="firstname" placeholder="Input client's name" required>
+                    <br>
+                </div>
+                <div class="client-input-div">
+                    Last name:<br>
+                    <input id="lname" class="text-input" type="text" name="lastname" placeholder="Input client's last name" required>
+                    <br>
+                </div>
+                <div class="client-input-div">
+                    Specialist:<br>
+                    <select id="spec-select">
+                        <option disable="disable" selected="selected">Assign a specialist</option>
+                        <option value="Cardiologist">Cardiologist</option>
+                        <option value="Odontologist">Odontologist</option>
+                        <option value="Dermatologist">Dermatologist</option>
+                    </select>
+                    <br><br>
+                </div>
+                <div><button type="submit">Submit</button></div>
+            </form> 
+            
+            <div id="buttons-div">
+                <button id="clear-local" type="button" value="clear-local-storage" onclick="localStorage.clear();">Clear local storage</button>
+                <button id="load-to-local" type="button" value="load-to-local-storage">Load to local storage</button> 
+                <button id="go-to-scoreboard" type="button" value="scoreboard"><a href="scoreboard.html">Scoreboard</a></button>
+                <button id="go-to-specialist" type="button" value="specialist"><a href="specialist.html">Specialist</a></button>
+            </div>
         </div>
     </body>
 </html>

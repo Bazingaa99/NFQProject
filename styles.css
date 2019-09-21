@@ -1,0 +1,52 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #c7f9ff;
+}
+
+/*ADMIN*/
+
+#admin-page-panel{
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    margin: 15vw auto;
+    padding: 2em;
+}
+
+#form-text-div{
+    padding: 0.7em;
+}
+
+#client-form{
+    text-align: center;
+}
+
+.client-input-div{
+    display: flex;
+    padding: 0.7em;
+    margin-top: -0.7em;
+}
+
+.text-input{
+    height: 1.5em;
+    margin: 1em;
+}
+
+#spec-select{
+    height: 2em;
+}
+
+#buttons-div{
+    display: flex;
+}
+
+/*SCOREBOARD*/
+
+#scoreboard{
+    background-color: #e7e6e6;
+    color: #009b93;
+    border: 1px solid black;
+    width: 25%;
+}

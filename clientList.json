@@ -2,27 +2,52 @@
     {
         "name":"Vardenis Pavardenis",
         "clientNum":"01",
-        "specialist":"dermatologist"
+        "specialist":"Dermatologist"
     },
     {
         "name":"Jonas Jonaitis",
         "clientNum":"02",
-        "specialist":"odontologist"
+        "specialist":"Odontologist"
     },
     {
         "name":"Ona Onute",
         "clientNum":"03",
-        "specialist":"cardiologist"
+        "specialist":"Cardiologist"
     },
     {
         "name":"Mantas Kalnietis",
         "clientNum":"04",
-        "specialist":"cardiologist"
+        "specialist":"Cardiologist"
     },
     {
         "name":"Rytis Vakarytis",
         "clientNum":"05",
-        "specialist":"dermatologist"
+        "specialist":"Dermatologist"
+    },
+    {
+        "name":"Vakaris Rytinis",
+        "clientNum":"06",
+        "specialist":"Odontologist"
+    },
+    {
+        "name":"Seimas Purvinis",
+        "clientNum":"07",
+        "specialist":"Cardiologist"
+    },
+    {
+        "name":"Dirma Dirmaite",
+        "clientNum":"08",
+        "specialist":"Cardiologist"
+    },
+    {
+        "name":"Jonas Valančiūnas",
+        "clientNum":"09",
+        "specialist":"Cardiologist"
+    },
+    {
+        "name":"Žiemius Vasaraitis",
+        "clientNum":"010",
+        "specialist":"Dermatologist"
     }
 ]
 

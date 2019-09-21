@@ -1,7 +1,7 @@
 window.onload=function(){
 
     //-------------------------ADMIN--------------------------
-
+    const specialistNum = 3;
 
     function fetchJSONFile(path, callback){
         var httpRequest = new XMLHttpRequest();
@@ -58,7 +58,6 @@ window.onload=function(){
                 var clientNum = calcClientNum();
                 localStorage.setItem(fullName, clientNum);
                 localStorage.setItem(clientNum, specialist);
-                updateScoreboard;
             }else{
                 alert("Client already in line.");
             }
@@ -67,12 +66,13 @@ window.onload=function(){
         }
     }
 
+    this.console.log(this.localStorage);
+
     const form = document.getElementById('client-form')
     if(form){
         form.addEventListener('submit', storeInfo);
     }
 
-    this.console.log(this.localStorage);
 //-----------------------SCOREBOARD-----------------------
     var scoreboard = document.getElementById('scoreboard');
     
@@ -90,8 +90,8 @@ window.onload=function(){
 
         var sorted = localStorageArray.sort(function (obj1, obj2) {
 
-            if (obj1.specialist > obj2.specialist) return -1;
-            if (obj1.specialist < obj2.specialist) return 1;
+            if (obj1.specialist < obj2.specialist) return -1;
+            if (obj1.specialist > obj2.specialist) return 1;
         
             if (obj1.clientNum > obj2.clientNum) return 1;
             if (obj1.clientNum < obj2.clientNum) return -1;
@@ -109,6 +109,60 @@ window.onload=function(){
     }
 
 //-----------------------SPECIALIST-----------------------
+    var selectSpec = document.getElementById('spec-page-spec-select');
+    var selectClient = document.getElementById('spec-page-client-select');
+    var servicedButton = document.getElementById('serviced-button');
+
+    if(selectSpec){
+        function refreshArray(){
+            var array = sortLocalStorage();
+
+            return array;
+        }
+        
+        var sortedArray = refreshArray();
+
+        var specArray = [...new this.Set(sortedArray.map(item => item.specialist))];
+        for(let item of specArray){
+            var option = document.createElement('option');
+            option.text = item;
+            selectSpec.add(option);
+        }
+
+        function changeClientList(){
+            for(let i = 0; i < selectClient.length; i++){
+                selectClient.remove(1);
+            }
+            var clientArray = sortedArray.map(item => item.clientNum);
+            for(let item of clientArray){
+                if(selectSpec.value === localStorage.getItem(item)){
+                    var option = document.createElement('option');
+                    for(let i = 0; i < localStorage.length; i++){
+                        if(localStorage.getItem(localStorage.key(i)) === item){
+                            option.text = item;
+                            break;
+                        }
+                    }
+                    selectClient.add(option);
+                }
+            }
+        }
+
+        function removeClient(){
+            localStorage.removeItem(selectClient.value);
+
+            console.log(localStorage);
+            
+            for(let i = 0; i < localStorage.length; i++){
+                if(localStorage.getItem(localStorage.key(i)) === selectClient.value){
+                    localStorage.removeItem(localStorage.key(i));
+                }
+            }
+        }
+
+        selectSpec.addEventListener('change', changeClientList);
+        servicedButton.addEventListener('click', removeClient);
+    }
 
 //------------------------COMBINED------------------------
 }
