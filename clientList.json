@@ -1,23 +1,28 @@
 [
     {
         "name":"Vardenis Pavardenis",
-        "clientNum":"01"
+        "clientNum":"01",
+        "specialist":"dermatologist"
     },
     {
         "name":"Jonas Jonaitis",
-        "clientNum":"02"
+        "clientNum":"02",
+        "specialist":"odontologist"
     },
     {
         "name":"Ona Onute",
-        "clientNum":"03"
+        "clientNum":"03",
+        "specialist":"cardiologist"
     },
     {
         "name":"Mantas Kalnietis",
-        "clientNum":"04"
+        "clientNum":"04",
+        "specialist":"cardiologist"
     },
     {
         "name":"Rytis Vakarytis",
-        "clientNum":"05"
+        "clientNum":"05",
+        "specialist":"dermatologist"
     }
 ]
 

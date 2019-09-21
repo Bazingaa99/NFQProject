@@ -1,6 +1,7 @@
 window.onload=function(){
 
-    let cardiologist = [], odontologist = [], dermatologist = [];
+    //-------------------------ADMIN--------------------------
+
 
     function fetchJSONFile(path, callback){
         var httpRequest = new XMLHttpRequest();
@@ -16,13 +17,19 @@ window.onload=function(){
         httpRequest.send();
     }
 
-    const loadButton = document.getElementById('load-to-local');
-    if(loadButton){
-        loadButton.addEventListener('click', fetchJSONFile('clientList.json', function(data){
+
+    function loadToLocal(){
+        fetchJSONFile('clientList.json', function(data){
             for(let client of data){
-                window.localStorage.setItem(client.name, client.clientNum);
-            }
-        }));
+                localStorage.setItem(client.name, client.clientNum);
+                localStorage.setItem(client.clientNum, client.specialist);
+            }})
+    }
+
+    const loadButton = document.getElementById('load-to-local');
+
+    if(loadButton){
+        loadButton.addEventListener('click', loadToLocal);
     }
 
     function calcClientNum(){
@@ -42,14 +49,16 @@ window.onload=function(){
     function storeInfo(){
         var name = document.getElementById("fname");
         var lastName = document.getElementById("lname");
-        var specialist = document.getElementById('spec-select');
+        var specialist = document.getElementById('spec-select').value;
 
         var fullName = name.value + " " + lastName.value;
 
-        if(name && lastName && specialist){
+        if(name && lastName && specialist !== "Assign a specialist"){
             if(localStorage.getItem(fullName) === null){
                 var clientNum = calcClientNum();
                 localStorage.setItem(fullName, clientNum);
+                localStorage.setItem(clientNum, specialist);
+                updateScoreboard;
             }else{
                 alert("Client already in line.");
             }
@@ -60,8 +69,46 @@ window.onload=function(){
 
     const form = document.getElementById('client-form')
     if(form){
-        form.addEventListener('submit', storeInfo)
+        form.addEventListener('submit', storeInfo);
     }
 
-    console.log(localStorage);
+    this.console.log(this.localStorage);
+//-----------------------SCOREBOARD-----------------------
+    var scoreboard = document.getElementById('scoreboard');
+    
+    function sortLocalStorage(){
+        var localStorageArray = [];
+        var obj = {};
+        for(let i = 0; i < localStorage.length; i++){
+            if(!isNaN(parseInt(localStorage.key(i)))){
+                obj = {};
+                obj.specialist = localStorage.getItem(localStorage.key(i));
+                obj.clientNum = localStorage.key(i);
+                localStorageArray.push(obj);
+            }
+        }
+
+        var sorted = localStorageArray.sort(function (obj1, obj2) {
+
+            if (obj1.specialist > obj2.specialist) return -1;
+            if (obj1.specialist < obj2.specialist) return 1;
+        
+            if (obj1.clientNum > obj2.clientNum) return 1;
+            if (obj1.clientNum < obj2.clientNum) return -1;
+        
+        });
+
+        return sorted;
+    }
+
+    if(scoreboard){
+        var sortedArray = sortLocalStorage();
+        for(let i = 0; i < sortedArray.length; i++){
+            scoreboard.innerHTML += "<tr><td>" + sortedArray[i].specialist + "</td><td>" + sortedArray[i].clientNum + "</td><tr>";
+        }
+    }
+
+//-----------------------SPECIALIST-----------------------
+
+//------------------------COMBINED------------------------
 }
