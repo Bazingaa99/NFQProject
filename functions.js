@@ -139,7 +139,7 @@ window.onload=function(){
                     var option = document.createElement('option');
                     for(let i = 0; i < localStorage.length; i++){
                         if(localStorage.getItem(localStorage.key(i)) === item){
-                            option.text = item;
+                            option.text = item + " " + localStorage.key(i);
                             break;
                         }
                     }
@@ -149,12 +149,17 @@ window.onload=function(){
         }
 
         function removeClient(){
-            localStorage.removeItem(selectClient.value);
+            var valueArray = selectClient.value.split(' ');
+            var clientNumOnly = valueArray[0];
+
+            console.log(clientNumOnly);
+
+            localStorage.removeItem(clientNumOnly);
 
             console.log(localStorage);
             
             for(let i = 0; i < localStorage.length; i++){
-                if(localStorage.getItem(localStorage.key(i)) === selectClient.value){
+                if(localStorage.getItem(localStorage.key(i)) === clientNumOnly){
                     localStorage.removeItem(localStorage.key(i));
                 }
             }
@@ -165,4 +170,6 @@ window.onload=function(){
     }
 
 //------------------------COMBINED------------------------
+
+
 }

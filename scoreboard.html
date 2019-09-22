@@ -6,10 +6,14 @@
 </head>
 <html>
     <body>
-        <table id="scoreboard">
-            <tr><td>SPECIALIST: </td><td>CLIENT NR: </td></tr>
-        </table>
-        <button id="go-to-admin" type="button" value="scoreboard"><a href="admin.html">Admin</a></button>
-        <button id="go-to-specialist" type="button" value="specialist"><a href="specialist.html">Specialist</a></button>
+        <div id="scoreboard-and-buttons">
+            <table id="scoreboard">
+                <tr id="board-top"><td class="board-item">SPECIALIST</td><td class="board-item">CLIENT</td></tr>
+            </table>
+            <div id="scoreboard-buttons">
+                <a class="scoreboard-a" id="go-to-admin" href="admin.html">ADMIN</a>
+                <a class="scoreboard-a" id="go-to-specialist" href="specialist.html">SPECIALIST</a>
+            </div>
+        </div>
     </body>
 </html>
