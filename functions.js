@@ -93,8 +93,8 @@ window.onload=function(){
             if (obj1.specialist < obj2.specialist) return -1;
             if (obj1.specialist > obj2.specialist) return 1;
         
-            if (obj1.clientNum > obj2.clientNum) return 1;
-            if (obj1.clientNum < obj2.clientNum) return -1;
+            if (parseInt(obj1.clientNum) > parseInt(obj2.clientNum)) return 1;
+            if (parseInt(obj1.clientNum) < parseInt(obj2.clientNum)) return -1;
         
         });
 
