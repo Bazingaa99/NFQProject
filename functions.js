@@ -1,7 +1,6 @@
 window.onload=function(){
 
     //-------------------------ADMIN--------------------------
-    const specialistNum = 3;
 
     function fetchJSONFile(path, callback){
         var httpRequest = new XMLHttpRequest();
@@ -58,6 +57,7 @@ window.onload=function(){
                 var clientNum = calcClientNum();
                 localStorage.setItem(fullName, clientNum);
                 localStorage.setItem(clientNum, specialist);
+                alert("Registered succesfully");
             }else{
                 alert("Client already in line.");
             }
@@ -69,11 +69,20 @@ window.onload=function(){
     this.console.log(this.localStorage);
 
     const form = document.getElementById('client-form')
+
     if(form){
         form.addEventListener('submit', storeInfo);
     }
 
+    const fname = document.getElementById('fname');
+    const select = document.getElementById('spec-select');
+    const submit = document.getElementById('form-submit');
+
+    if(fname){
+        fname.focus();
+    }
 //-----------------------SCOREBOARD-----------------------
+
     var scoreboard = document.getElementById('scoreboard');
     
     function sortLocalStorage(){
@@ -93,8 +102,8 @@ window.onload=function(){
             if (obj1.specialist < obj2.specialist) return -1;
             if (obj1.specialist > obj2.specialist) return 1;
         
-            if (obj1.clientNum > obj2.clientNum) return 1;
-            if (obj1.clientNum < obj2.clientNum) return -1;
+            if (parseInt(obj1.clientNum) > parseInt(obj2.clientNum)) return 1;
+            if (parseInt(obj1.clientNum) < parseInt(obj2.clientNum)) return -1;
         
         });
 
@@ -103,12 +112,28 @@ window.onload=function(){
 
     if(scoreboard){
         var sortedArray = sortLocalStorage();
+        this.console.log(sortedArray);
+        var currentSpecialist = "";
+        const maxNumOfClientsPerSpec = 5;
+        var currentNumOfClientsPerSpec;
         for(let i = 0; i < sortedArray.length; i++){
-            scoreboard.innerHTML += "<tr><td>" + sortedArray[i].specialist + "</td><td>" + sortedArray[i].clientNum + "</td><tr>";
+            if(sortedArray[i].specialist !== currentSpecialist){
+                currentNumOfClientsPerSpec = 1;
+                currentSpecialist = sortedArray[i].specialist;
+                scoreboard.innerHTML += "<tr class='first'><td>" + sortedArray[i].specialist + "</td><td>" + sortedArray[i].clientNum + "</td><tr>";
+            }else if(currentNumOfClientsPerSpec < maxNumOfClientsPerSpec){
+                this.console.log("dabar klientu yra: ", currentNumOfClientsPerSpec, "/n galima kiekis klientu: ", maxNumOfClientsPerSpec);
+                scoreboard.innerHTML += "<tr><td>" + sortedArray[i].specialist + "</td><td>" + sortedArray[i].clientNum + "</td><tr>";
+                currentNumOfClientsPerSpec++;
+            }
         }
     }
 
+    this.console.log(parseInt("01"));
+    this.console.log(parseInt("010"));
+
 //-----------------------SPECIALIST-----------------------
+
     var selectSpec = document.getElementById('spec-page-spec-select');
     var selectClient = document.getElementById('spec-page-client-select');
     var servicedButton = document.getElementById('serviced-button');
@@ -130,7 +155,9 @@ window.onload=function(){
         }
 
         function changeClientList(){
-            for(let i = 0; i < selectClient.length; i++){
+            var startClientLength = selectClient.length;
+
+            for(let i = 0; i < startClientLength; i++){
                 selectClient.remove(1);
             }
             var clientArray = sortedArray.map(item => item.clientNum);
@@ -161,7 +188,7 @@ window.onload=function(){
             for(let i = 0; i < localStorage.length; i++){
                 if(localStorage.getItem(localStorage.key(i)) === clientNumOnly){
                     localStorage.removeItem(localStorage.key(i));
-                }
+                } 
             }
         }
 
@@ -169,7 +196,7 @@ window.onload=function(){
         servicedButton.addEventListener('click', removeClient);
     }
 
-//------------------------COMBINED------------------------
+//------------------------CLIENT------------------------
 
 
 }
